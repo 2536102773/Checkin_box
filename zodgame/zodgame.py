@@ -77,7 +77,7 @@ def zodgame():
         elif '已经签到' in page_text:
             tg_bot('zodgame已经签到了')
             print('zodgame已经签到了')
-            send_get_request("zodgame已经签到了")
+            #send_get_request("zodgame已经签到了")
         else:
             print(page_text)
             tg_bot('zodgame签到出错')
