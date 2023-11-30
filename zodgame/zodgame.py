@@ -3,6 +3,7 @@ import re
 import sys
 
 cookie = sys.argv[1]
+sendkey = sys.argv[2]
 
 print('测试')
 print(cookie)
@@ -19,8 +20,8 @@ headers = {
 
 #配置server酱推送消息
 def send_get_request(title):
-    base_url = 'https://sctapi.ftqq.com/SCT100626Lyd0Y.send?title='
-    url = base_url + title
+    base_url = 'https://sctapi.ftqq.com/'
+    url = base_url + sendkey + '.send?title=' + title
     response = requests.get(url)
 
 def get_user_info():
