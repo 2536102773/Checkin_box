@@ -7,6 +7,7 @@ sendkey = sys.argv[2]
 
 print('测试')
 print(cookie)
+print(sendkey)
 
 # tgbot机器人配置,为空为不启用
 bottoken = ''
