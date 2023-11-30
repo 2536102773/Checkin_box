@@ -17,6 +17,11 @@ headers = {
     'cookie': cookie
 }
 
+#配置server酱推送消息
+def send_get_request(title):
+    base_url = 'https://sctapi.ftqq.com/SCT100626Lyd0Y.send?title='
+    url = base_url + title
+    response = requests.get(url)
 
 def get_user_info():
     # 获取积分
@@ -37,10 +42,12 @@ def get_user_info():
         else:
             print('未获取到数据,疑似cookie失效')
             tg_bot('未获取到数据,疑似cookie失效')
+            send_get_request("zodgame签到出错")
             exit()
     except Exception as error:
         print(error)
         print("zodgame签到出错")
+        send_get_request("zodgame签到出错")
 
 
 def zodgame():
@@ -57,10 +64,12 @@ def zodgame():
         if "已被系统拒绝" in page_text:
             tg_bot('zodgame的cookie已过期')
             print("zodgame的cookie已过期")
+            send_get_request("zodgame的cookie已过期")
         elif "恭喜" in page_text:
             s, formhash, username, points_name, points_num = get_user_info()
             print('zodgame签到成功!\n用户:{}\n{}{}'.format(
                 username, points_name, points_num))
+            send_get_request("zodgame签到成功")
             tg_bot('zodgame签到成功!\n用户:{}\n{}{}'.format(
                 username, points_name, points_num))
         elif '已经签到' in page_text:
@@ -69,9 +78,11 @@ def zodgame():
         else:
             print(page_text)
             tg_bot('zodgame签到出错')
+            send_get_request("zodgame签到出错")
     except Exception as error:
         print(error)
         print("zodgame签到出错")
+        send_get_request("zodgame签到出错")
 
 
 def tg_bot(text):
