@@ -71,7 +71,7 @@ def zodgame():
             s, formhash, username, points_name, points_num = get_user_info()
             print('zodgame签到成功!\n用户:{}\n{}{}'.format(
                 username, points_name, points_num))
-            send_get_request("zodgame签到成功")
+            #send_get_request("zodgame签到成功")
             tg_bot('zodgame签到成功!\n用户:{}\n{}{}'.format(
                 username, points_name, points_num))
         elif '已经签到' in page_text:
